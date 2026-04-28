@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoClean AI – Collection Schedule</title>
+    <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/logo.png" alt="Logo" width="40" height="40">
+                EcoClean AI
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="container mt-4">
+        <h1 class="text-center">
+            <i class="fas fa-calendar-alt text-success me-2"></i>
+            Collection Schedule
+        </h1>
+        <p class="text-center text-muted">Scheduled garbage collections from user reports</p>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container my-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="form-container">
+                    <h3 class="mb-4">
+                        <i class="fas fa-list text-success me-2"></i>
+                        Upcoming Collections
+                    </h3>
+                    
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead class="table-success">
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Area/Waste Type</th>
+                                    <th>Location</th>
+                                    <th>Reported By</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="scheduleBody">
+                                <!-- Data loads here -->
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="text-center mt-3" id="noReportsMsg">
+                        <i class="fas fa-inbox fa-3x text-muted"></i>
+                        <p class="mt-2">No reports yet. Submit a report to see it here!</p>
+                        <a href="report.html" class="btn btn-custom">Report Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-custom py-4 mt-4">
+        <div class="container text-center">
+            <p>© 2025 EcoClean AI. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // ============================================
+        // Load Reports and Show as Schedule
+        // ============================================
+        
+        function loadScheduleFromReports() {
+            // Get all reports from localStorage
+            let reports = JSON.parse(localStorage.getItem('garbageReports')) || [];
+            
+            const tbody = document.getElementById('scheduleBody');
+            const noReportsMsg = document.getElementById('noReportsMsg');
+            
+            if (reports.length === 0) {
+                // Show empty message
+                if (noReportsMsg) noReportsMsg.style.display = 'block';
+                if (tbody) tbody.innerHTML = '';
+                return;
+            }
+            
+            // Hide empty message
+            if (noReportsMsg) noReportsMsg.style.display = 'none';
+            
+            // Sort reports by date (newest first for pending, oldest first for collection)
+            const pendingReports = reports.filter(r => r.status !== 'Resolved');
+            const resolvedReports = reports.filter(r => r.status === 'Resolved');
+            
+            // Show pending reports first (need collection)
+            const sortedReports = [...pendingReports, ...resolvedReports];
+            
+            // Generate table rows
+            let html = '';
+            
+            sortedReports.forEach((report, index) => {
+                // Calculate collection date (3 days from report date)
+                const reportDate = new Date(report.date);
+                const collectionDate = new Date(reportDate);
+                collectionDate.setDate(reportDate.getDate() + 3);
+                
+                const formattedDate = collectionDate.toLocaleDateString();
+                const status = report.status || 'Pending';
+                
+                let statusBadge = '';
+                let actionButton = '';
+                
+                if (status === 'Pending') {
+                    statusBadge = '<span class="badge bg-warning text-dark">Pending Collection</span>';
+                    actionButton = '<button class="btn btn-sm btn-success mark-resolved" data-id="' + report.id + '">Mark Collected</button>';
+                } else if (status === 'In Progress') {
+                    statusBadge = '<span class="badge bg-info">In Progress</span>';
+                    actionButton = '<button class="btn btn-sm btn-success mark-resolved" data-id="' + report.id + '">Mark Collected</button>';
+                } else {
+                    statusBadge = '<span class="badge bg-success">Collected ✓</span>';
+                    actionButton = '<span class="text-muted">Completed</span>';
+                }
+                
+                // Get waste type badge color
+                let typeBadge = '';
+                switch(report.wasteType) {
+                    case 'plastic': typeBadge = '<span class="badge bg-primary">Plastic</span>'; break;
+                    case 'construction': typeBadge = '<span class="badge bg-warning text-dark">Construction</span>'; break;
+                    case 'organic': typeBadge = '<span class="badge bg-success">Organic</span>'; break;
+                    case 'electronic': typeBadge = '<span class="badge bg-info">Electronic</span>'; break;
+                    case 'hazardous': typeBadge = '<span class="badge bg-danger">Hazardous</span>'; break;
+                    default: typeBadge = '<span class="badge bg-secondary">Other</span>';
+                }
+                
+                html += `
+                    <tr>
+                        <td><i class="far fa-calendar me-2 text-success"></i>${formattedDate}</td>
+                        <td>${typeBadge}</td>
+                        <td><i class="fas fa-map-pin text-danger me-2"></i>${report.latitude || 'No location'}, ${report.longitude || ''}</td>
+                        <td><i class="fas fa-user me-2"></i>${report.userName || 'Anonymous'}</td>
+                        <td>${statusBadge}</td>
+                        <td>${actionButton}</td>
+                    </tr>
+                `;
+            });
+            
+            tbody.innerHTML = html;
+            
+            // Add event listeners to "Mark Collected" buttons
+            document.querySelectorAll('.mark-resolved').forEach(button => {
+                button.addEventListener('click', function() {
+                    const reportId = parseInt(this.getAttribute('data-id'));
+                    markReportAsCollected(reportId);
+                });
+            });
+        }
+        
+        // ============================================
+        // Mark Report as Collected
+        // ============================================
+        
+        function markReportAsCollected(reportId) {
+            let reports = JSON.parse(localStorage.getItem('garbageReports')) || [];
+            
+            // Find and update the report
+            const reportIndex = reports.findIndex(r => r.id === reportId);
+            if (reportIndex !== -1) {
+                reports[reportIndex].status = 'Resolved';
+                localStorage.setItem('garbageReports', JSON.stringify(reports));
+                
+                // Update user points for resolution
+                const userName = reports[reportIndex].userName;
+                if (userName && userName !== 'Anonymous') {
+                    let users = JSON.parse(localStorage.getItem('users')) || [];
+                    const userIndex = users.findIndex(u => u.name === userName);
+                    if (userIndex !== -1) {
+                        users[userIndex].points += 20;
+                        users[userIndex].resolved = (users[userIndex].resolved || 0) + 1;
+                        localStorage.setItem('users', JSON.stringify(users));
+                    }
+                }
+                
+                // Show success message
+                alert('✓ Report marked as collected! User earned 20 EcoPoints.');
+                
+                // Reload the schedule
+                loadScheduleFromReports();
+            }
+        }
+        
+        // ============================================
+        // Initialize Page
+        // ============================================
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            loadScheduleFromReports();
+        });
+    </script>
+</body>
+</html>

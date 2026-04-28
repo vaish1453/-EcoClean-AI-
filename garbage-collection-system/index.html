@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoClean AI – AI-Powered Garbage Collection System</title>
+    
+    <!-- ============================================ -->
+    <!-- 1. BOOTSTRAP CSS (Responsive Framework)      -->
+    <!-- ============================================ -->
+    <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css">
+    
+    <!-- ============================================ -->
+    <!-- 2. FONT AWESOME ICONS                        -->
+    <!-- ============================================ -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- ============================================ -->
+    <!-- 3. GOOGLE FONTS (Poppins for modern look)    -->
+    <!-- ============================================ -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- ============================================ -->
+    <!-- 4. CUSTOM CSS (Your styles)                  -->
+    <!-- ============================================ -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ============================================ -->
+    <!-- 5. NAVIGATION BAR (Bootstrap Component)      -->
+    <!-- ============================================ -->
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container">
+            <!-- Brand/Logo -->
+            <a class="navbar-brand" href="index.html">
+                <img src="images/logo.png" alt="EcoClean AI Logo" width="40" height="40" class="d-inline-block align-text-top">
+                <span class="brand-text">EcoClean AI</span>
+            </a>
+            
+            <!-- Mobile Toggle Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <!-- Navigation Links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============================================ -->
+    <!-- 6. HERO SECTION (With CSS Animations)        -->
+    <!-- ============================================ -->
+    <div class="container">
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="display-4 animate-heading">
+                    <i class="fas fa-robot me-2"></i>
+                    AI-Powered Garbage Collection
+                </h1>
+                <p class="lead animate-text">
+                    Report waste hotspots and help us clean your city using artificial intelligence
+                </p>
+                <a href="report.html" class="btn btn-light btn-lg animate-btn">
+                    <i class="fas fa-map-marker-alt me-2"></i>Get Started
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- 7. MAIN CONTENT (Feature Cards)              -->
+    <!-- ============================================ -->
+    <main class="container my-5">
+        <!-- Section Title -->
+        <h2 class="text-center mb-5 section-title">
+            <i class="fas fa-question-circle text-success me-2"></i>
+            What Would You Like to Do?
+        </h2>
+        
+        <!-- Bootstrap Grid Row -->
+        <div class="row g-4">
+            
+            <!-- CARD 1: Report Garbage -->
+            <div class="col-md-6 col-lg-3">
+                <div class="feature-card-main card-1">
+                    <div class="card-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Report Garbage</h3>
+                    <p>Report a garbage hotspot with location and photo. Help us identify problem areas.</p>
+                    <a href="report.html" class="btn-custom">
+                        Go to Report <i class="fas fa-arrow-right ms-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- CARD 2: View Map -->
+            <div class="col-md-6 col-lg-3">
+                <div class="feature-card-main card-2">
+                    <div class="card-icon">
+                        <i class="fas fa-map"></i>
+                    </div>
+                    <h3>View Map</h3>
+                    <p>See all reported hotspots on an interactive map. Track collection progress.</p>
+                    <a href="map.html" class="btn-custom">
+                        Explore Map <i class="fas fa-arrow-right ms-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- CARD 3: AI Dashboard -->
+            <div class="col-md-6 col-lg-3">
+                <div class="feature-card-main card-3">
+                    <div class="card-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>AI Dashboard</h3>
+                    <p>View AI predictions, waste collection analytics, and optimized routes.</p>
+                    <a href="dashboard.html" class="btn-custom">
+                        View Dashboard <i class="fas fa-arrow-right ms-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- CARD 4: Leaderboard -->
+            <div class="col-md-6 col-lg-3">
+                <div class="feature-card-main card-4">
+                    <div class="card-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>Leaderboard</h3>
+                    <p>See top reporters and earn EcoPoints. Compete with your community!</p>
+                    <a href="leaderboard.html" class="btn-custom">
+                        Check Rankings <i class="fas fa-arrow-right ms-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ============================================ -->
+    <!-- 11. CALL TO ACTION SECTION                   -->
+    <!-- ============================================ -->
+    <section class="cta-section my-5">
+        <div class="container">
+            <div class="cta-card text-center">
+                <h2>Ready to Make a Difference?</h2>
+                <p>Join thousands of citizens who are already contributing to a cleaner city.</p>
+                <a href="report.html" class="btn btn-custom btn-lg">
+                    <i class="fas fa-map-marker-alt me-2"></i>Report Now
+                </a>
+                <a href="about.html" class="btn btn-outline-light btn-lg ms-3">
+                    <i class="fas fa-info-circle me-2"></i>Learn More
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- 12. FOOTER SECTION                           -->
+    <!-- ============================================ -->
+    <footer class="footer-custom py-5">
+        <div class="container">
+            <div class="row">
+                <!-- About Column -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <h5><i class="fas fa-leaf me-2"></i>EcoClean AI</h5>
+                    <p>Using artificial intelligence to create a cleaner, greener planet through smart waste management.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="leaderboard.html">Leaderboard</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Services -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Services</h5>
+                    <ul class="footer-links">
+                        <li><a href="report.html">Report Garbage</a></li>
+                        <li><a href="map.html">Live Map</a></li>
+                        <li><a href="dashboard.html">AI Dashboard</a></li>
+                        <li><a href="schedule.html">Collection Schedule</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Contact Us</h5>
+                    <ul class="footer-links contact-info">
+                        <li><i class="fas fa-map-marker-alt me-2"></i>123 Green Street, Eco City</li>
+                        <li><i class="fas fa-envelope me-2"></i>info@ecoclean.ai</li>
+                        <li><i class="fas fa-phone me-2"></i>+1 234 567 8900</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <hr>
+            
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="mb-0">© 2025 EcoClean AI. All rights reserved. | Made with <i class="fas fa-heart text-danger"></i> for a cleaner planet</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================ -->
+    <!-- 13. JAVASCRIPT (Bootstrap Bundle)            -->
+    <!-- ============================================ -->
+    <script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- ============================================ -->
+    <!-- 14. CUSTOM JAVASCRIPT (Optional for counters)-->
+    <!-- ============================================ -->
+    <script>
+        // Simple counter animation for stats
+        document.addEventListener('DOMContentLoaded', function() {
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const text = counter.innerText;
+                const value = parseInt(text.replace(/,/g, ''));
+                if (!isNaN(value)) {
+                    let current = 0;
+                    const increment = value / 50;
+                    const updateCounter = () => {
+                        current += increment;
+                        if (current < value) {
+                            counter.innerText = Math.floor(current).toLocaleString();
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            counter.innerText = value.toLocaleString();
+                        }
+                    };
+                    updateCounter();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

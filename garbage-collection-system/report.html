@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>EcoClean AI – Report Garbage Hotspot</title>
+    
+    <!-- ============================================ -->
+    <!-- 1. BOOTSTRAP CSS (Responsive Framework)      -->
+    <!-- ============================================ -->
+    <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css">
+    
+    <!-- ============================================ -->
+    <!-- 2. FONT AWESOME ICONS                        -->
+    <!-- ============================================ -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- ============================================ -->
+    <!-- 3. GOOGLE FONTS (Poppins for modern look)    -->
+    <!-- ============================================ -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- ============================================ -->
+    <!-- 4. CUSTOM CSS (Your styles)                  -->
+    <!-- ============================================ -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ============================================ -->
+    <!-- 5. NAVIGATION BAR (Bootstrap Component)      -->
+    <!-- ============================================ -->
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container">
+            <!-- Brand/Logo -->
+            <a class="navbar-brand" href="index.html">
+                <img src="images/logo.png" alt="EcoClean AI Logo" width="40" height="40" class="d-inline-block align-text-top">
+                <span class="brand-text">EcoClean AI</span>
+            </a>
+            
+            <!-- Mobile Toggle Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <!-- Navigation Links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============================================ -->
+    <!-- 6. PAGE HEADER WITH ANIMATION                -->
+    <!-- ============================================ -->
+    <div class="container mt-4">
+        <div class="page-header text-center animate-heading">
+            <h1 class="display-5">
+                <i class="fas fa-map-marker-alt text-success me-2"></i>
+                Report Garbage Hotspot
+            </h1>
+            <p class="text-muted">Help us keep our city clean by reporting garbage hotspots</p>
+            <div class="header-divider"></div>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- 7. MAIN CONTENT (Two Column Layout)          -->
+    <!-- ============================================ -->
+    <main class="container my-4">
+        <div class="row g-4">
+            
+            <!-- ======================================== -->
+            <!-- LEFT COLUMN: REPORT FORM (8 columns)     -->
+            <!-- ======================================== -->
+            <div class="col-lg-8 animate-left">
+                <div class="form-container">
+                    <h3 class="mb-4">
+                        <i class="fas fa-clipboard-list text-success me-2"></i>
+                        Report Details
+                    </h3>
+                    
+                    <form id="reportForm" novalidate>
+                        <!-- ==================================== -->
+                        <!-- 8. DESCRIPTION FIELD (Textarea)      -->
+                        <!-- ==================================== -->
+                        <div class="mb-3">
+                            <label for="description" class="form-label fw-bold">
+                                Description <span class="text-danger">*</span>
+                            </label>
+                            <textarea class="form-control" id="description" rows="4" 
+                                placeholder="Describe the garbage site in detail (e.g., type of waste, approximate quantity, how long it's been there...)" 
+                                required></textarea>
+                            <div class="form-text">
+                                <i class="fas fa-info-circle me-1"></i>
+                                Provide as much detail as possible to help our team respond effectively.
+                            </div>
+                            <div class="invalid-feedback">
+                                Please provide a description of the garbage site.
+                            </div>
+                        </div>
+
+                        <!-- ==================================== -->
+                        <!-- 9. WASTE TYPE DROPDOWN                -->
+                        <!-- ==================================== -->
+                        <div class="mb-3">
+                            <label for="wasteType" class="form-label fw-bold">
+                                Waste Type <span class="text-danger">*</span>
+                            </label>
+                            <select class="form-select" id="wasteType" required>
+                                <option value="" selected disabled>Select waste type</option>
+                                <option value="plastic">♻️ Plastic Waste</option>
+                                <option value="construction">🏗️ Construction Debris</option>
+                                <option value="organic">🍂 Organic Waste</option>
+                                <option value="electronic">💻 Electronic Waste</option>
+                                <option value="hazardous">⚠️ Hazardous Waste</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Please select a waste type.
+                            </div>
+                        </div>
+
+                        <!-- ==================================== -->
+                        <!-- 10. IMAGE UPLOAD WITH PREVIEW         -->
+                        <!-- ==================================== -->
+                        <div class="mb-3">
+                            <label for="imageUpload" class="form-label fw-bold">
+                                <i class="fas fa-camera me-1"></i>Upload Image
+                            </label>
+                            <input class="form-control" type="file" id="imageUpload" accept="image/*">
+                            <div class="form-text">
+                                <i class="fas fa-info-circle me-1"></i>
+                                Upload a clear photo of the garbage site (optional but helpful).
+                                <br>Maximum file size: 5MB (JPEG, PNG, JPG only)
+                            </div>
+                            
+                            <!-- Image Preview Container -->
+                            <div id="imagePreviewContainer" class="mt-3" style="display: none;">
+                                <div class="image-preview-wrapper">
+                                    <img id="previewImg" src="#" alt="Image Preview">
+                                    <button type="button" id="removeImageBtn" class="btn-remove-image">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ==================================== -->
+                        <!-- 11. LOCATION WITH GEOLOCATION         -->
+                        <!-- ==================================== -->
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">
+                                <i class="fas fa-location-dot me-1"></i>Location <span class="text-danger">*</span>
+                            </label>
+                            
+                            <div class="row g-2">
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control" id="latitude" placeholder="Latitude" readonly>
+                                    <div class="form-text">Auto-filled from geolocation</div>
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control" id="longitude" placeholder="Longitude" readonly>
+                                    <div class="form-text">Auto-filled from geolocation</div>
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="button" class="btn btn-custom w-100" id="getLocationBtn">
+                                        <i class="fas fa-location-dot"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div id="locationStatus" class="mt-2"></div>
+                        </div>
+
+                        <!-- ==================================== -->
+                        <!-- 12. USER NAME (Optional)              -->
+                        <!-- ==================================== -->
+                        <div class="mb-3">
+                            <label for="userName" class="form-label fw-bold">
+                                <i class="fas fa-user me-1"></i>Your Name (optional)
+                            </label>
+                            <input type="text" class="form-control" id="userName" 
+                                placeholder="Enter your name to earn EcoPoints and appear on leaderboard">
+                            <div class="form-text">
+                                <i class="fas fa-star text-warning me-1"></i>
+                                Earn 10 EcoPoints for every report! +5 bonus points for adding photos.
+                            </div>
+                        </div>
+
+                        <!-- ==================================== -->
+                        <!-- 13. TERMS AND CONDITIONS CHECKBOX     -->
+                        <!-- ==================================== -->
+                        <div class="mb-4 form-check">
+                            <input type="checkbox" class="form-check-input" id="termsCheckbox" required>
+                            <label class="form-check-label" for="termsCheckbox">
+                                I confirm that the information provided is accurate and I have permission to report this location.
+                            </label>
+                            <div class="invalid-feedback">
+                                You must agree to the terms before submitting.
+                            </div>
+                        </div>
+
+                        <!-- ==================================== -->
+                        <!-- 14. SUBMIT BUTTON                     -->
+                        <!-- ==================================== -->
+                        <button type="submit" class="btn btn-custom w-100" id="submitBtn">
+                            <i class="fas fa-paper-plane me-2"></i>Submit Report
+                            <span class="spinner-border spinner-border-sm ms-2 d-none" id="submitSpinner"></span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- ======================================== -->
+            <!-- RIGHT COLUMN: TIPS & INFO (4 columns)    -->
+            <!-- ======================================== -->
+            <div class="col-lg-4 animate-right">
+                
+                <!-- Reporting Tips Card -->
+                <div class="form-container bg-light mb-4">
+                    <h4 class="mb-3">
+                        <i class="fas fa-lightbulb text-warning me-2"></i>
+                        Reporting Tips
+                    </h4>
+                    <ul class="list-unstyled tips-list">
+                        <li class="mb-3">
+                            <i class="fas fa-check-circle text-success me-2"></i>
+                            Be specific about the location (landmarks help)
+                        </li>
+                        <li class="mb-3">
+                            <i class="fas fa-check-circle text-success me-2"></i>
+                            Take clear photos from different angles
+                        </li>
+                        <li class="mb-3">
+                            <i class="fas fa-check-circle text-success me-2"></i>
+                            Mention if it's hazardous waste
+                        </li>
+                        <li class="mb-3">
+                            <i class="fas fa-check-circle text-success me-2"></i>
+                            Report only public areas
+                        </li>
+                        <li class="mb-3">
+                            <i class="fas fa-check-circle text-success me-2"></i>
+                            Include approximate quantity
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle text-success me-2"></i>
+                            Update report if situation changes
+                        </li>
+                    </ul>
+                    <hr>
+                    <div class="text-center">
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <p class="text-muted small mt-2">
+                            Your report helps us keep the city clean. 
+                            <br>Thank you for being an EcoHero!
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- EcoPoints Info Card -->
+                <div class="form-container bg-success text-white">
+                    <h4 class="mb-3">
+                        <i class="fas fa-coins me-2"></i>
+                        Earn EcoPoints!
+                    </h4>
+                    <ul class="list-unstyled points-list">
+                        <li class="mb-2">
+                            <i class="fas fa-plus-circle me-2"></i>
+                            Submit report: <strong>10 points</strong>
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-plus-circle me-2"></i>
+                            Add photo: <strong>+5 points</strong>
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-plus-circle me-2"></i>
+                            Report resolved: <strong>+20 points</strong>
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-plus-circle me-2"></i>
+                            Refer a friend: <strong>+50 points</strong>
+                        </li>
+                        <li>
+                            <i class="fas fa-trophy me-2"></i>
+                            Top reporters get special badges!
+                        </li>
+                    </ul>
+                    <div class="text-center mt-3">
+                        <a href="leaderboard.html" class="btn btn-light btn-sm">
+                            View Leaderboard <i class="fas fa-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Emergency Contact Card -->
+                <div class="form-container bg-danger text-white mt-4">
+                    <h4 class="mb-3">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        Emergency?
+                    </h4>
+                    <p class="mb-2">For hazardous waste or illegal dumping:</p>
+                    <h5 class="mb-0">
+                        <i class="fas fa-phone-alt me-2"></i>
+                        24/7 Helpline: 1-800-555-CLEAN
+                    </h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- 15. RELATED LINKS SECTION                    -->
+        <!-- ============================================ -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card border-0 bg-light animate-up">
+                    <div class="card-body">
+                        <h5 class="card-title mb-3">
+                            <i class="fas fa-link text-success me-2"></i>
+                            Related
+                        </h5>
+                        <div class="d-flex flex-wrap gap-3">
+                            <a href="schedule.html" class="btn btn-outline-success btn-sm">
+                                <i class="fas fa-calendar-alt me-1"></i>View Collection Schedule
+                            </a>
+                            <a href="map.html" class="btn btn-outline-success btn-sm">
+                                <i class="fas fa-map me-1"></i>See Other Reports on Map
+                            </a>
+                            <a href="leaderboard.html" class="btn btn-outline-success btn-sm">
+                                <i class="fas fa-trophy me-1"></i>Check Leaderboard
+                            </a>
+                            <a href="dashboard.html" class="btn btn-outline-success btn-sm">
+                                <i class="fas fa-chart-line me-1"></i>AI Dashboard
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ============================================ -->
+    <!-- 16. SUCCESS MODAL (Bootstrap Component)      -->
+    <!-- ============================================ -->
+    <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title">
+                        <i class="fas fa-check-circle me-2"></i>
+                        Report Submitted Successfully!
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center py-4">
+                    <i class="fas fa-leaf fa-4x text-success mb-3"></i>
+                    <i class="fas fa-check-circle fa-4x text-success" style="margin-left: -50px;"></i>
+                    
+                    <h4 class="mt-3">Thank You, <span id="modalUserName">EcoHero</span>!</h4>
+                    <p class="text-muted">Your report has been submitted successfully.</p>
+                    
+                    <div class="alert alert-info mt-3">
+                        <i class="fas fa-coins me-2"></i>
+                        You earned <strong id="earnedPoints">10</strong> EcoPoints!
+                    </div>
+                    
+                    <div class="alert alert-success mt-2">
+                        <i class="fas fa-clock me-2"></i>
+                        Our team will review your report within 24 hours.
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <a href="map.html" class="btn btn-custom">
+                        <i class="fas fa-map me-2"></i>View on Map
+                    </a>
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        <i class="fas fa-plus me-2"></i>Submit Another
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- 17. FOOTER SECTION                           -->
+    <!-- ============================================ -->
+    <footer class="footer-custom py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="mb-0">© 2025 EcoClean AI. All rights reserved. | Together for a cleaner planet 🌍</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================ -->
+    <!-- 18. BOOTSTRAP JAVASCRIPT                     -->
+    <!-- ============================================ -->
+    <script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- ============================================ -->
+    <!-- 19. CUSTOM JAVASCRIPT                        -->
+    <!-- ============================================ -->
+    <script>
+        // ============================================
+        // DOM Elements
+        // ============================================
+        const form = document.getElementById('reportForm');
+        const descriptionInput = document.getElementById('description');
+        const wasteTypeSelect = document.getElementById('wasteType');
+        const imageUpload = document.getElementById('imageUpload');
+        const imagePreviewContainer = document.getElementById('imagePreviewContainer');
+        const previewImg = document.getElementById('previewImg');
+        const removeImageBtn = document.getElementById('removeImageBtn');
+        const latitudeInput = document.getElementById('latitude');
+        const longitudeInput = document.getElementById('longitude');
+        const locationStatus = document.getElementById('locationStatus');
+        const userNameInput = document.getElementById('userName');
+        const termsCheckbox = document.getElementById('termsCheckbox');
+        const getLocationBtn = document.getElementById('getLocationBtn');
+        const submitBtn = document.getElementById('submitBtn');
+        const submitSpinner = document.getElementById('submitSpinner');
+
+        // ============================================
+        // Image Preview Function
+        // ============================================
+        if (imageUpload) {
+            imageUpload.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    // Validate file size (5MB max)
+                    if (file.size > 5 * 1024 * 1024) {
+                        alert('File size too large! Maximum size is 5MB.');
+                        imageUpload.value = '';
+                        return;
+                    }
+                    
+                    // Validate file type
+                    const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
+                    if (!validTypes.includes(file.type)) {
+                        alert('Invalid file type! Please upload JPEG, PNG, or GIF.');
+                        imageUpload.value = '';
+                        return;
+                    }
+                    
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        previewImg.src = event.target.result;
+                        imagePreviewContainer.style.display = 'block';
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    imagePreviewContainer.style.display = 'none';
+                    previewImg.src = '#';
+                }
+            });
+        }
+        
+        // Remove image button
+        if (removeImageBtn) {
+            removeImageBtn.addEventListener('click', function() {
+                imageUpload.value = '';
+                imagePreviewContainer.style.display = 'none';
+                previewImg.src = '#';
+            });
+        }
+
+        // ============================================
+        // Geolocation Function (HTML5 API)
+        // ============================================
+        function getLocation() {
+            if (navigator.geolocation) {
+                locationStatus.innerHTML = '<div class="alert alert-info py-1"><i class="fas fa-spinner fa-spin me-2"></i>Getting location...</div>';
+                
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        latitudeInput.value = position.coords.latitude;
+                        longitudeInput.value = position.coords.longitude;
+                        locationStatus.innerHTML = '<div class="alert alert-success py-1"><i class="fas fa-check-circle me-2"></i>Location captured successfully!</div>';
+                    },
+                    (error) => {
+                        let errorMsg = '';
+                        switch(error.code) {
+                            case error.PERMISSION_DENIED:
+                                errorMsg = 'Location permission denied. Please enable location services.';
+                                break;
+                            case error.POSITION_UNAVAILABLE:
+                                errorMsg = 'Location information unavailable.';
+                                break;
+                            case error.TIMEOUT:
+                                errorMsg = 'Location request timed out.';
+                                break;
+                            default:
+                                errorMsg = 'An error occurred getting location.';
+                        }
+                        locationStatus.innerHTML = `<div class="alert alert-danger py-1"><i class="fas fa-exclamation-triangle me-2"></i>${errorMsg}</div>`;
+                    },
+                    {
+                        enableHighAccuracy: true,
+                        timeout: 10000,
+                        maximumAge: 0
+                    }
+                );
+            } else {
+                locationStatus.innerHTML = '<div class="alert alert-danger py-1"><i class="fas fa-exclamation-triangle me-2"></i>Geolocation is not supported by this browser.</div>';
+            }
+        }
+
+        if (getLocationBtn) {
+            getLocationBtn.addEventListener('click', getLocation);
+        }
+
+        // ============================================
+        // localStorage Functions
+        // ============================================
+        
+        // Save report to localStorage
+        function saveReport(report) {
+            let reports = JSON.parse(localStorage.getItem('garbageReports')) || [];
+            report.id = Date.now();
+            report.date = new Date().toISOString();
+            report.status = 'Pending';
+            reports.push(report);
+            localStorage.setItem('garbageReports', JSON.stringify(reports));
+            return report.id;
+        }
+        
+        // Get all users
+        function getUsers() {
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+            if (users.length === 0) {
+                users = [
+                    { id: 1, name: "EcoWarrior", reports: 62, resolved: 55, points: 1500, joinDate: "Jan 2025" },
+                    { id: 2, name: "GreenHero", reports: 45, resolved: 38, points: 1200, joinDate: "Jan 2025" },
+                    { id: 3, name: "PlanetSaver", reports: 32, resolved: 28, points: 900, joinDate: "Feb 2025" }
+                ];
+                localStorage.setItem('users', JSON.stringify(users));
+            }
+            return users;
+        }
+        
+        // Update user points
+        function updateUserPoints(userName, points) {
+            let users = getUsers();
+            let user = users.find(u => u.name === userName);
+            
+            if (user) {
+                user.points += points;
+                user.reports += 1;
+            } else if (userName && userName !== 'Anonymous' && userName !== '') {
+                users.push({
+                    id: Date.now(),
+                    name: userName,
+                    reports: 1,
+                    resolved: 0,
+                    points: points,
+                    joinDate: new Date().toLocaleDateString('en-US', { month: 'short', year: 'numeric' })
+                });
+            }
+            
+            localStorage.setItem('users', JSON.stringify(users));
+        }
+        
+        // Convert image to base64
+        function getImageBase64(file) {
+            return new Promise((resolve, reject) => {
+                if (!file) {
+                    resolve(null);
+                    return;
+                }
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = (error) => reject(error);
+                reader.readAsDataURL(file);
+            });
+        }
+
+        // ============================================
+        // Form Validation and Submission
+        // ============================================
+        
+        if (form) {
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                // Validate required fields
+                let isValid = true;
+                
+                if (!descriptionInput.value.trim()) {
+                    descriptionInput.classList.add('is-invalid');
+                    isValid = false;
+                } else {
+                    descriptionInput.classList.remove('is-invalid');
+                }
+                
+                if (!wasteTypeSelect.value) {
+                    wasteTypeSelect.classList.add('is-invalid');
+                    isValid = false;
+                } else {
+                    wasteTypeSelect.classList.remove('is-invalid');
+                }
+                
+                if (!termsCheckbox.checked) {
+                    termsCheckbox.classList.add('is-invalid');
+                    isValid = false;
+                } else {
+                    termsCheckbox.classList.remove('is-invalid');
+                }
+                
+                if (!latitudeInput.value || !longitudeInput.value) {
+                    const useLocation = confirm('Location not captured. Do you want to submit without location?');
+                    if (!useLocation) {
+                        return;
+                    }
+                }
+                
+                if (!isValid) {
+                    alert('Please fill all required fields!');
+                    return;
+                }
+                
+                // Show loading spinner
+                submitBtn.disabled = true;
+                submitSpinner.classList.remove('d-none');
+                
+                // Get image as base64
+                let imageBase64 = null;
+                if (imageUpload.files[0]) {
+                    try {
+                        imageBase64 = await getImageBase64(imageUpload.files[0]);
+                    } catch(error) {
+                        console.error('Error reading image:', error);
+                    }
+                }
+                
+                // Calculate points
+                let points = 10;
+                if (imageUpload.files[0]) points += 5;
+                
+                // Create report object
+                const report = {
+                    description: descriptionInput.value.trim(),
+                    wasteType: wasteTypeSelect.value,
+                    latitude: latitudeInput.value,
+                    longitude: longitudeInput.value,
+                    image: imageBase64,
+                    userName: userNameInput.value.trim() || 'Anonymous',
+                    status: 'Pending'
+                };
+                
+                // Save report
+                saveReport(report);
+                
+                // Update user points
+                const userName = report.userName;
+                if (userName !== 'Anonymous') {
+                    updateUserPoints(userName, points);
+                }
+                
+                // Update modal with user name and points
+                document.getElementById('modalUserName').innerText = userName;
+                document.getElementById('earnedPoints').innerText = points;
+                
+                // Reset form
+                form.reset();
+                latitudeInput.value = '';
+                longitudeInput.value = '';
+                imagePreviewContainer.style.display = 'none';
+                previewImg.src = '#';
+                locationStatus.innerHTML = '';
+                descriptionInput.classList.remove('is-invalid');
+                wasteTypeSelect.classList.remove('is-invalid');
+                termsCheckbox.classList.remove('is-invalid');
+                
+                // Show success modal
+                const modal = new bootstrap.Modal(document.getElementById('successModal'));
+                modal.show();
+                
+                // Reset button
+                submitBtn.disabled = false;
+                submitSpinner.classList.add('d-none');
+            });
+        }
+        
+        // Remove invalid class when user types
+        descriptionInput?.addEventListener('input', function() {
+            if (this.value.trim()) this.classList.remove('is-invalid');
+        });
+        
+        wasteTypeSelect?.addEventListener('change', function() {
+            if (this.value) this.classList.remove('is-invalid');
+        });
+        
+        termsCheckbox?.addEventListener('change', function() {
+            if (this.checked) this.classList.remove('is-invalid');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>EcoClean AI – Leaderboard</title>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ============================================ -->
+    <!-- 1. NAVIGATION BAR                             -->
+    <!-- ============================================ -->
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/logo.png" alt="Logo" width="40" height="40">
+                <span>EcoClean AI</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============================================ -->
+    <!-- 2. PAGE HEADER                                -->
+    <!-- ============================================ -->
+    <div class="container mt-4">
+        <div class="text-center">
+            <h1 class="display-5">
+                <i class="fas fa-trophy text-warning me-2"></i>
+                Top Reporters
+            </h1>
+            <p class="text-muted">See who's making the biggest impact in our community</p>
+            <div class="header-divider"></div>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- 3. PODIUM SECTION (Top 3)                    -->
+    <!-- ============================================ -->
+    <div class="container my-4">
+        <div class="row justify-content-center align-items-end">
+            
+            <!-- 2nd Place -->
+            <div class="col-md-3 col-6 text-center order-md-1">
+                <div class="podium-card silver">
+                    <div class="podium-rank">2</div>
+                    <i class="fas fa-user-circle fa-4x text-secondary"></i>
+                    <h4 class="mt-2" id="secondName">GreenHero</h4>
+                    <span class="badge bg-secondary" id="secondPoints">1,200 pts</span>
+                    <div class="mt-2 small">
+                        <div><i class="fas fa-flag me-1"></i> <span id="secondReports">45</span> reports</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 1st Place -->
+            <div class="col-md-3 col-6 text-center order-md-0">
+                <div class="podium-card gold">
+                    <div class="crown"><i class="fas fa-crown fa-2x text-warning"></i></div>
+                    <div class="podium-rank">1</div>
+                    <i class="fas fa-user-circle fa-5x text-warning"></i>
+                    <h4 class="mt-2" id="firstName">EcoWarrior</h4>
+                    <span class="badge bg-warning text-dark" id="firstPoints">1,500 pts</span>
+                    <div class="mt-2 small">
+                        <div><i class="fas fa-flag me-1"></i> <span id="firstReports">62</span> reports</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 3rd Place -->
+            <div class="col-md-3 col-6 text-center order-md-2">
+                <div class="podium-card bronze">
+                    <div class="podium-rank">3</div>
+                    <i class="fas fa-user-circle fa-4x text-danger"></i>
+                    <h4 class="mt-2" id="thirdName">PlanetSaver</h4>
+                    <span class="badge bg-danger" id="thirdPoints">900 pts</span>
+                    <div class="mt-2 small">
+                        <div><i class="fas fa-flag me-1"></i> <span id="thirdReports">32</span> reports</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- 4. LEADERBOARD TABLE                         -->
+    <!-- ============================================ -->
+    <div class="container my-4">
+        <div class="card border-0 shadow">
+            <div class="card-header bg-success text-white">
+                <h5 class="mb-0"><i class="fas fa-list me-2"></i>All Reporters</h5>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>#</th>
+                                <th>User</th>
+                                <th>Reports</th>
+                                <th>Points</th>
+                                <th>Badge</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leaderboardBody">
+                            <!-- Data loads here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- 5. HOW TO EARN POINTS                        -->
+    <!-- ============================================ -->
+    <div class="container my-4">
+        <div class="card border-0 bg-light">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <i class="fas fa-question-circle text-success me-2"></i>
+                    How to Earn Points?
+                </h5>
+                <div class="row text-center mt-3">
+                    <div class="col-md-3 col-6 mb-2">
+                        <span class="badge bg-success">10 pts</span>
+                        <small class="d-block">Report garbage</small>
+                    </div>
+                    <div class="col-md-3 col-6 mb-2">
+                        <span class="badge bg-success">+5 pts</span>
+                        <small class="d-block">Add photo</small>
+                    </div>
+                    <div class="col-md-3 col-6 mb-2">
+                        <span class="badge bg-success">+20 pts</span>
+                        <small class="d-block">Report resolved</small>
+                    </div>
+                    <div class="col-md-3 col-6 mb-2">
+                        <span class="badge bg-warning text-dark">+50 pts</span>
+                        <small class="d-block">Refer a friend</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- 6. RELATED LINKS                             -->
+    <!-- ============================================ -->
+    <div class="container my-4">
+        <div class="card border-0 bg-light">
+            <div class="card-body">
+                <div class="d-flex flex-wrap gap-2 justify-content-center">
+                    <a href="report.html" class="btn btn-outline-success btn-sm">
+                        <i class="fas fa-plus me-1"></i>Report Now
+                    </a>
+                    <a href="map.html" class="btn btn-outline-success btn-sm">
+                        <i class="fas fa-map me-1"></i>View Map
+                    </a>
+                    <a href="dashboard.html" class="btn btn-outline-success btn-sm">
+                        <i class="fas fa-chart-line me-1"></i>Dashboard
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- 7. FOOTER                                    -->
+    <!-- ============================================ -->
+    <footer class="footer-custom py-4 mt-4">
+        <div class="container text-center">
+            <p class="mb-0">© 2025 EcoClean AI. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- ============================================ -->
+    <!-- 8. SCRIPTS                                   -->
+    <!-- ============================================ -->
+    <script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // ============================================
+        // Sample User Data
+        // ============================================
+        
+        let users = [
+            { id: 1, name: "EcoWarrior", reports: 62, points: 1500, badge: "Gold" },
+            { id: 2, name: "GreenHero", reports: 45, points: 1200, badge: "Silver" },
+            { id: 3, name: "PlanetSaver", reports: 32, points: 900, badge: "Bronze" },
+            { id: 4, name: "CleanCity", reports: 28, points: 750, badge: "Green" },
+            { id: 5, name: "RecycleKing", reports: 25, points: 680, badge: "Green" },
+            { id: 6, name: "EcoFriend", reports: 22, points: 620, badge: "Green" },
+            { id: 7, name: "WasteWatcher", reports: 20, points: 580, badge: "Green" },
+            { id: 8, name: "GreenGuru", reports: 18, points: 520, badge: "Green" }
+        ];
+        
+        // ============================================
+        // Sort users by points (highest first)
+        // ============================================
+        function sortUsers() {
+            users.sort((a, b) => b.points - a.points);
+        }
+        
+        // ============================================
+        // Get badge color based on points
+        // ============================================
+        function getBadgeClass(points) {
+            if (points >= 1000) return 'bg-warning text-dark';
+            if (points >= 750) return 'bg-secondary';
+            if (points >= 500) return 'bg-danger';
+            if (points >= 250) return 'bg-success';
+            return 'bg-info';
+        }
+        
+        function getBadgeName(points) {
+            if (points >= 1000) return 'Gold';
+            if (points >= 750) return 'Silver';
+            if (points >= 500) return 'Bronze';
+            if (points >= 250) return 'Green';
+            return 'Eco';
+        }
+        
+        // ============================================
+        // Update Podium (Top 3)
+        // ============================================
+        function updatePodium() {
+            if (users.length >= 1) {
+                document.getElementById('firstName').innerText = users[0].name;
+                document.getElementById('firstPoints').innerText = users[0].points + ' pts';
+                document.getElementById('firstReports').innerText = users[0].reports;
+            }
+            if (users.length >= 2) {
+                document.getElementById('secondName').innerText = users[1].name;
+                document.getElementById('secondPoints').innerText = users[1].points + ' pts';
+                document.getElementById('secondReports').innerText = users[1].reports;
+            }
+            if (users.length >= 3) {
+                document.getElementById('thirdName').innerText = users[2].name;
+                document.getElementById('thirdPoints').innerText = users[2].points + ' pts';
+                document.getElementById('thirdReports').innerText = users[2].reports;
+            }
+        }
+        
+        // ============================================
+        // Update Leaderboard Table
+        // ============================================
+        function updateLeaderboard() {
+            const tbody = document.getElementById('leaderboardBody');
+            if (!tbody) return;
+            
+            sortUsers();
+            updatePodium();
+            
+            let html = '';
+            
+            users.forEach((user, index) => {
+                const rank = index + 1;
+                let rankIcon = '';
+                if (rank === 1) rankIcon = '🥇';
+                else if (rank === 2) rankIcon = '🥈';
+                else if (rank === 3) rankIcon = '🥉';
+                else rankIcon = rank;
+                
+                const badgeClass = getBadgeClass(user.points);
+                const badgeName = getBadgeName(user.points);
+                
+                html += `
+                    <tr>
+                        <td><strong>${rankIcon}</strong></td>
+                        <td>
+                            <i class="fas fa-user-circle text-success me-2"></i>
+                            ${user.name}
+                        </td>
+                        <td>${user.reports}</td>
+                        <td><strong>${user.points}</strong></td>
+                        <td><span class="badge ${badgeClass}">${badgeName}</span></td>
+                    </tr>
+                `;
+            });
+            
+            tbody.innerHTML = html;
+        }
+        
+        // ============================================
+        // Load data from localStorage
+        // ============================================
+        function loadFromStorage() {
+            const savedUsers = localStorage.getItem('users');
+            if (savedUsers) {
+                const parsedUsers = JSON.parse(savedUsers);
+                if (parsedUsers && parsedUsers.length > 0) {
+                    users = parsedUsers.map(u => ({
+                        id: u.id,
+                        name: u.name,
+                        reports: u.reports,
+                        points: u.points,
+                        badge: getBadgeName(u.points)
+                    }));
+                }
+            }
+            updateLeaderboard();
+        }
+        
+        // ============================================
+        // Save to localStorage when points change
+        // ============================================
+        function saveToStorage() {
+            localStorage.setItem('users', JSON.stringify(users));
+        }
+        
+        // ============================================
+        // Add sample data if empty
+        // ============================================
+        function initializeData() {
+            const existing = localStorage.getItem('users');
+            if (!existing) {
+                saveToStorage();
+            }
+        }
+        
+        // ============================================
+        // Page Load
+        // ============================================
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeData();
+            loadFromStorage();
+        });
+    </script>
+</body>
+</html>

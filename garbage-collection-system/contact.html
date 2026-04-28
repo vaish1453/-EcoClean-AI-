@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoClean AI – Contact Us</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/logo.png" alt="Logo" width="40" height="40">
+                EcoClean AI
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container my-4">
+        <!-- Page Header -->
+        <div class="text-center mb-5">
+            <h1 class="display-4">Get In Touch</h1>
+            <div class="divider"></div>
+            <p class="lead text-muted">We'd love to hear from you! Send us a message anytime.</p>
+        </div>
+
+        <!-- Contact Info Cards Row -->
+        <div class="row mb-5">
+            <div class="col-md-4 mb-4">
+                <div class="contact-info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h4>Visit Us</h4>
+                    <p class="mb-2">123 Green Street</p>
+                    <p class="mb-2">Eco City, EC 12345</p>
+                    <p>United States</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="contact-info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h4>Call Us</h4>
+                    <p class="mb-2">+1 (234) 567-8900</p>
+                    <p class="mb-2">+1 (234) 567-8901</p>
+                    <p>Mon-Fri, 9am - 6pm</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="contact-info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h4>Email Us</h4>
+                    <p class="mb-2">info@ecoclean.ai</p>
+                    <p class="mb-2">support@ecoclean.ai</p>
+                    <p>careers@ecoclean.ai</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Form and Map Row -->
+        <div class="row">
+            <!-- Contact Form (Left Column) -->
+            <div class="col-lg-7 mb-4">
+                <div class="form-container">
+                    <h3 class="mb-4"><i class="fas fa-paper-plane text-success me-2"></i>Send Us a Message</h3>
+                    
+                    <form>
+                        <!-- Name Row -->
+                        <div class="row mb-3">
+                            <div class="col-md-6 mb-3 mb-md-0">
+                                <label for="firstName" class="form-label">First Name *</label>
+                                <input type="text" class="form-control" id="firstName" placeholder="Enter your first name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="lastName" class="form-label">Last Name *</label>
+                                <input type="text" class="form-control" id="lastName" placeholder="Enter your last name" required>
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email Address *</label>
+                            <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
+                        </div>
+
+                        <!-- Phone -->
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input type="tel" class="form-control" id="phone" placeholder="+1 (234) 567-8900">
+                        </div>
+
+                        <!-- Subject -->
+                        <div class="mb-3">
+                            <label for="subject" class="form-label">Subject *</label>
+                            <select class="form-select" id="subject" required>
+                                <option value="" selected disabled>Select a subject</option>
+                                <option value="general">General Inquiry</option>
+                                <option value="support">Technical Support</option>
+                                <option value="report">Report Garbage Issue</option>
+                                <option value="partnership">Partnership Opportunity</option>
+                                <option value="feedback">Feedback / Suggestion</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <!-- Message -->
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message *</label>
+                            <textarea class="form-control" id="message" rows="5" placeholder="Tell us how we can help you..." required></textarea>
+                        </div>
+
+                        <!-- Attachment -->
+                        <div class="mb-4">
+                            <label for="attachment" class="form-label">Attachment (optional)</label>
+                            <input class="form-control" type="file" id="attachment" accept=".jpg,.png,.pdf,.doc">
+                            <div class="form-text">Upload images, documents (max 5MB)</div>
+                        </div>
+
+                        <!-- Checkbox -->
+                        <div class="mb-4 form-check">
+                            <input type="checkbox" class="form-check-input" id="newsletter">
+                            <label class="form-check-label" for="newsletter">Subscribe to our newsletter for updates</label>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-custom w-100">
+                            <i class="fas fa-paper-plane me-2"></i>Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Right Column (Map + Additional Info) -->
+            <div class="col-lg-5 mb-4">
+                <!-- Map Container -->
+                <div class="form-container mb-4">
+                    <h4 class="mb-3"><i class="fas fa-map text-success me-2"></i>Our Location</h4>
+                    <div class="map-container">
+                        <div class="map-placeholder">
+                            <i class="fas fa-map-marked-alt fa-4x text-success mb-3"></i>
+                            <h5>Interactive Map</h5>
+                            <p class="text-muted small">123 Green Street, Eco City</p>
+                            <div class="map-coordinates mt-2">
+                                <span class="badge bg-success me-2">Lat: 40.7128° N</span>
+                                <span class="badge bg-success">Long: 74.0060° W</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Business Hours -->
+                <div class="form-container mb-4">
+                    <h4 class="mb-3"><i class="fas fa-clock text-success me-2"></i>Business Hours</h4>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Monday - Friday
+                            <span class="fw-bold">9:00 AM - 6:00 PM</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Saturday
+                            <span class="fw-bold">10:00 AM - 4:00 PM</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Sunday
+                            <span class="fw-bold text-danger">Closed</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Emergency Support
+                            <span class="fw-bold text-success">24/7</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Social Media & Quick Connect -->
+                <div class="form-container">
+                    <h4 class="mb-3"><i class="fas fa-share-alt text-success me-2"></i>Connect With Us</h4>
+                    <div class="social-connect mb-4">
+                        <a href="#" class="social-icon facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-icon linkedin">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-icon instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon youtube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                    
+                    <h5 class="mb-2">Quick Response</h5>
+                    <div class="quick-response">
+                        <p class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>We reply within 24 hours</p>
+                        <p class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Emergency? Call our hotline</p>
+                        <p><i class="fas fa-check-circle text-success me-2"></i>Available in 5 languages</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Preview Section -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="form-container bg-light">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h3 class="mb-0"><i class="fas fa-question-circle text-success me-2"></i>Frequently Asked Questions</h3>
+                        <a href="#" class="btn btn-outline-success btn-sm">View All FAQs</a>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="faq-item mb-3">
+                                <h5 class="text-success">How do I report garbage?</h5>
+                                <p class="text-muted small">Simply go to the Report page, fill in the details, and click submit. You can also use the "Get My Location" button to auto-fill coordinates.</p>
+                            </div>
+                            <div class="faq-item mb-3">
+                                <h5 class="text-success">How are EcoPoints calculated?</h5>
+                                <p class="text-muted small">10 points per report, +5 for photos, +20 when your report is resolved, and +50 for referring friends.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="faq-item mb-3">
+                                <h5 class="text-success">Is the map updated in real-time?</h5>
+                                <p class="text-muted small">Yes, new reports appear on the map within minutes of submission.</p>
+                            </div>
+                            <div class="faq-item mb-3">
+                                <h5 class="text-success">How do I contact support?</h5>
+                                <p class="text-muted small">Use this contact form, email us at support@ecoclean.ai, or call during business hours.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Related Links -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card border-0 bg-light">
+                    <div class="card-body">
+                        <h5 class="card-title mb-3"><i class="fas fa-link text-success me-2"></i>Related</h5>
+                        <div class="d-flex flex-wrap gap-3">
+                            <a href="about.html" class="btn btn-outline-success btn-sm">
+                                <i class="fas fa-info-circle me-1"></i>About Us
+                            </a>
+                            <a href="report.html" class="btn btn-outline-success btn-sm">
+                                <i class="fas fa-map-marker-alt me-1"></i>Report Garbage
+                            </a>
+                            <a href="leaderboard.html" class="btn btn-outline-success btn-sm">
+                                <i class="fas fa-trophy me-1"></i>Leaderboard
+                            </a>
+                            <a href="dashboard.html" class="btn btn-outline-success btn-sm">
+                                <i class="fas fa-chart-line me-1"></i>AI Dashboard
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer with centered copyright -->
+    <footer class="footer-custom py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="mb-0">© 2025 EcoClean AI. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
